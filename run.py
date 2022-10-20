@@ -1,3 +1,4 @@
+'''
 import torch
 from cifar10_models.vgg import vgg11_bn
 from torch.vision.models import vgg11, VGG11_Weights
@@ -12,6 +13,10 @@ preprocess1 = VGG11_Weights.transfrom()
 img1 = read_image("grace_hopper_517x606.jpg")
 batch1 = preprocess1(img).unsqueeze(0)
 prediction = model1(batch1)
+'''
+import torch
+model1 = torch.hub.load("chenyaofo/pytorch-cifar-models", "cifar10_resnet20", pretrained=True)
+model2= torch.hub.load("chenyaofo/pytorch-cifar-models", "cifar100_resnet20", pretrained=True)
 
 
 ### preprocessing for model2 is using mean = [0.4914, 0.4822, 0.4465] std = [0.2471, 0.2435, 0.2616] to normalize the image
