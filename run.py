@@ -1,14 +1,15 @@
 import torch
 from cifar10_models.vgg import vgg11_bn
-from torch.vison.models import vgg11, VGG11_Weights
+from torch.vision.models import vgg11, VGG11_Weights
 weights = VGG11_Weights.DEFAULT
 model1 = vgg11(weights=weights)
+# Firstly run 'python train.py --download_weights 1' to get pretrained model of vgg11_bn
 model2 = vgg11_bn(pretrained=True)
 
 ### preprocessing and model prediction for model1
 
 preprocess1 = VGG11_Weights.transfrom()
-img1 = read_image("test/assets/encode_jpeg/grace_hopper_517x606.jpg")
+img1 = read_image("grace_hopper_517x606.jpg")
 batch1 = preprocess1(img).unsqueeze(0)
 prediction = model1(batch1)
 
